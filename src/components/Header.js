@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from './Logo'
+ import Logo from './Logo'
  import Title from '../styles/title/Title'
  import Button from '../styles/button/Button'
  import PropTypes from 'prop-types';
@@ -8,7 +8,7 @@ import Logo from './Logo'
     let companyName = "TNI"
     const companyAddress = <p>Bangkok</p>
     let number = 10
-    const showMessage = () => {
+        const showMessage = () => {
         return companyName + ".com"
     }
 
@@ -25,25 +25,25 @@ import Logo from './Logo'
         {id: 4, name: "SevenUP"}
     ]
 
-    return (
-        <div>
-    
-            <Title>Project React</Title>
-            <h1>Hello {showMessage()}</h1>
-            {companyAddress}
-            {number * 2}
-            {showMessage()}
-            {
-                     isLogin === true ? (
-                     <>
-                         <p>Welcome</p>
-                        <p>Teacher</p>
-                    </>
-                    ) : (
-                    <>
-                        <p>Welcome</p>
-                        <p>Student</p>
-                        </>
+return (
+    <div>
+
+        <Title>Project React</Title>
+        <h1>Hello {showMessage()}</h1>
+        {companyAddress}
+        {number * 2}
+        {showMessage()}
+        {
+                 isLogin === true ? (
+                 <>
+                     <p>Welcome</p>
+                    <p>Teacher</p>
+                </>
+                ) : (
+                <>
+                    <p>Welcome</p>
+                    <p>Student</p>
+                </>
                  )
              }
 { isLogin ? <Logo /> : <p>Unlock. </p> }
@@ -60,11 +60,14 @@ import Logo from './Logo'
                  </Button>
                  </>
              )
-            }
-              <otherButton></otherButton>
-             
-              <ul>
-              {
+
+             }
+
+             <otherButton></otherButton>
+
+             <ul>
+
+            {
                 products.map((products,index) => {
                     return (<li key={index}>{index+1} {products.name}</li>)
                 })
@@ -72,15 +75,11 @@ import Logo from './Logo'
             </ul>
             <hr/>
         </div>
-          )
-        }
-       
-        Header.propTypes ={
-          keyword: PropTypes.bool
-        };
-        export default Header;
-       
+     )
+ }
 
+ Header.propTypes ={
+   keyword: PropTypes.bool
+ };
 
-
-
+ export default Header;
