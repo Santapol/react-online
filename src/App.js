@@ -7,19 +7,25 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
-import AboutPage from "./components/AboutPage";
+import AboutPage from "./pages/AboutPage";
+import DetailPage from "./pages/DetailPage";
+import HomePage from "./pages/HomePage";
+import ProductPage from "./pages/ProductPage";
 import Footer from "./components/Footer";
 import Navber from "./components/Navbar";
-import HomePage from "./pages/HomePage";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
     <>
-     <Router>
+      <Router>
         <Navber></Navber>
         <Switch>
           <Route exact path="/"><HomePage/></Route>
           <Route path="/about"><AboutPage/></Route>
+          <Route path="/detail"><DetailPage/></Route>
+          <Route path="/product"><ProductPage/></Route>
+          <Route path="/contact"><ContactUs/></Route>
         </Switch>
         <Footer></Footer>
       </Router>
