@@ -2,12 +2,10 @@ import React from "react";
 import { Table, Image, Badge, Spinner, Button} from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
 const ProductPage = () => {
   const [product, setProduct] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-
   const getData = async () => {
     try {
       setLoading(true); // เริ่มหมุนติ้วๆตรงนี้
@@ -21,11 +19,9 @@ const ProductPage = () => {
       setLoading(false); // หยุดตรงนี้ทุกกรณีที่ทำเสร็จว่าว่าจะ try หรือ catch ก็ตาม
     }
   };
-
   React.useEffect(() => {
     getData();
   }, []);
-
   if (loading === true) {
     return (
       <div className="text-center mt-5">
@@ -33,7 +29,6 @@ const ProductPage = () => {
       </div>
     );
   }
-
   if (error) {
     return (
       <div className="text-center mt-5 text-danger">
@@ -42,7 +37,6 @@ const ProductPage = () => {
       </div>
     );
   }
-
   return (
     <div className="container">
       <div className="row">
@@ -76,7 +70,7 @@ const ProductPage = () => {
                       <Image src={p.picture} rounded width={60} />
                     </td>
                     <td>
-                      <Link to="/detail">
+                    <Link to={`/detail/${p.id}/title/${p.title}`}>
                         <Button variant="primary">Click</Button>
                       </Link>
                     </td>
@@ -90,5 +84,4 @@ const ProductPage = () => {
     </div>
   );
 };
-
 export default ProductPage;

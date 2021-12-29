@@ -14,7 +14,6 @@ import ProductPage from "./pages/ProductPage";
 import Footer from "./components/Footer";
 import Navber from "./components/Navbar";
 import ContactUs from "./pages/ContactUs";
-
 function App() {
   return (
     <>
@@ -23,7 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/"><HomePage/></Route>
           <Route path="/about"><AboutPage/></Route>
-          <Route path="/detail"><DetailPage/></Route>
+          <Route path="/detail/:id/title/:title"><DetailPage/></Route>
           <Route path="/product"><ProductPage/></Route>
           <Route path="/contact"><ContactUs/></Route>
         </Switch>
