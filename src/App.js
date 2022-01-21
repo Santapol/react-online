@@ -1,37 +1,35 @@
+
 import React from "react";
+import Footer from "./components/Footer";
+import NavBar from "./components/NavBar";
+import HomePage from "./pages/HomePage";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams,
+  Link
 } from "react-router-dom";
 import AboutPage from "./pages/AboutPage";
-import DetailPage from "./pages/DetailPage";
-import HomePage from "./pages/HomePage";
 import ProductPage from "./pages/ProductPage";
-import Footer from "./components/Footer";
-import Navber from "./components/Navbar";
-import ContactUs from "./pages/ContactUs";
-import HospitalPage from "./pages/hospital/HospitalPage";
-
+import DetailPage from "./pages/DetailPage";
+import ContactPage from "./pages/ContactPage";
+import HospitalPage from "./pages/Hospital/HospitalPage";
+import CategoryPage from './pages/Category/CategoryPage'
 function App() {
   return (
-    <>
-      <Router>
-        <Navber></Navber>
+    <Router>
+        <NavBar/>
         <Switch>
-          <Route exact path="/"><HomePage/></Route>
-          <Route path="/about"><AboutPage/></Route>
-          <Route path="/detail/:id/title/:title"><DetailPage/></Route>
-          <Route path="/product"><ProductPage/></Route>
-          <Route path="/contact"><ContactUs/></Route>
-          <Route path='/hospitalPage'><HospitalPage/></Route>
+          <Route exact path='/'><HomePage/></Route>
+          <Route path='/product'><ProductPage/></Route>
+          <Route path='/about'><AboutPage/></Route>
+          <Route path='/detail/:id/title/:title'><DetailPage/></Route>
+          <Route path='/contact'><ContactPage/></Route>
+          <Route path='/hospital'><HospitalPage/></Route>
+          <Route path="/category"><CategoryPage /></Route>
         </Switch>
-        <Footer></Footer>
-      </Router>
-    </>
+        <Footer/>
+    </Router>
   );
 }
-export default App;
+export default App; 
