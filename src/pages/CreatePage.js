@@ -1,4 +1,4 @@
-@@ -1,10 +1,11 @@
+@@ -1,11 +1,11 @@
 import React from 'react'
 import {Form, Button} from "react-bootstrap"
 import { useForm } from "react-hook-form";
@@ -8,48 +8,37 @@ import axios from 'axios';
 import {useParams ,useHistory} from 'react-router-dom'
 import { useToasts } from 'react-toast-notifications';
 
-
 const schema = yup.object({
     name: yup.string().required('Category news cannot be null'),
   }).required();
-const EditPage = () => {
-    const [error, setError] = React.useState(null)
+const CreatePage = () => {
 
-    const { id } = useParams()
+    const [error, setError] = React.useState(null)
 
     const {addToast } = useToasts()
 
     const history = useHistory()
 
-    const { register, handleSubmit, formState:{ errors }, setValue } = useForm({
+    const { register, handleSubmit, formState:{ errors } } = useForm({
         resolver: yupResolver(schema)
       });
     const onSubmit = async (data) => {
-        console.log(data)
+        //console.log(data)
         try{
             const apiURL = 'https://api.codingthailand.com/api/category'
-            const resp = await axios.put(apiURL,
+            const resp = await axios.post(apiURL,
                 {
-                    id:id,
                     name: data.name
                 }
             )
-            //alert('updateเสร็จสิ้น')
-            addToast('updateเสร็จสิ้น',{appearance:'success', autoDismiss:true})
+            //alert(resp.data.message)
+            addToast(resp.data.message , {appearance:'success', autoDismiss:true})
             history.goBack()
         }
         catch(error){
             setError(error)
         }
     }
-    React.useEffect(() => {
-        getData(id);
-    },[id])
-    const getData = async (id) => {
-        const resp = await axios.get('https://api.codingthailand.com/api/category/' + id);
-        //console.log(resp.data)
-        setValue('name',resp.data.name)
-    };
     if(error){
         return(
             <div className="text-center mt-5 text-danger">
@@ -62,7 +51,7 @@ const EditPage = () => {
         <div className="container">
             <div className="row">
                 <div className="col-md-12 mt-2">
-                    <h2>Edit Category</h2>
+                    <h2>Add New Category</h2>
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <Form.Group controlId="name">
                             <Form.Label>Category New</Form.Label>
@@ -76,7 +65,7 @@ const EditPage = () => {
                             }
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                            Update
+                            Submit
                         </Button>
                     </Form>
                 </div>
@@ -84,4 +73,4 @@ const EditPage = () => {
         </div>
     )
 }
-export default EditPage
+export default CreatePage
